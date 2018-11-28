@@ -1,0 +1,40 @@
+.container-fluid
+    .row
+        .col-md-6.col-sm-12.col-lg-6.mx-auto
+            .card.card-form
+                .card-body
+                    -#%h2{:class => "text-center lead"} User Registration
+                    = image_tag("regis-icon.png", class: "rounded mx-auto d-block")
+                    %hr
+                    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+                        .row
+                            .col-md-6.col-lg-6
+                                %p Account Information: 
+                                .form-group
+                                    = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Your email address", :required => true
+                                .form-group
+                                    = f.password_field :password, class: "form-control", placeholder: "Enter your password", :required => true
+                                    - if @minimum_password_length
+                                        %p.font-italic.text-center.text-primary.signup-info
+                                            note: your password should 
+                                            = @minimum_password_length
+                                            character at least
+                                .form-group
+                                    = f.password_field :password_confirmation, class: "form-control", placeholder: "Enter your confirmation password", :required => true
+                            .col-md-6.col-lg-6 
+                                %p Personal Information:
+                                .form-group
+                                    = f.text_field :firstName, autofocus: true, class: "form-control", placeholder: "Enter your first name", :required => true
+                                .form-group
+                                    = f.text_field :lastName, autofocus: true, class: "form-control", placeholder: "Enter your last name", :required => true
+                        %hr
+                        = devise_error_messages!
+                        = f.submit "Sign up", class: "btn btn-primary btn-block"
+
+
+
+
+
+
+
+

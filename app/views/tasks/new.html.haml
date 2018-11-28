@@ -1,0 +1,31 @@
+.container-fluid
+    .row
+        .col-md-4.col-sm-12.col-lg-4.mx-auto
+            .card.card-form
+                .card-body
+                    = image_tag("add-task-icon.png", class: "rounded mx-auto d-block")
+                    %hr
+                    = form_with scope: :task, url: tasks_path, local: true do |f| 
+                        .form-group
+                            = f.text_field :taskName, autofocus: true, class: "form-control", placeholder: "Enter your task name", required: true
+                        .form-group
+                            = f.date_field :taskDate, autofocus: true, class: "form-control", placeholder: "Enter your task date", min: Date.today, required: true
+                        .form-group
+                            = f.select :taskPriority, [['High', 3],['Medium', 2],['Low', 1]], {}, {:class => "form-control"}
+                        .form-group
+                            = f.text_area :description, class: "form-control", placeholder: "Enter your task description", rows: "4"
+                        .form-group
+                            = f.text_field :taskStatus, class: "form-control", value: "not finished", readonly: true
+                        .form-group
+                            = f.hidden_field :user_id, value: current_user.id
+                        %hr
+                        = f.submit "Submit Task", class: "btn btn-primary btn-block"
+
+                  
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+.container-fluid
+	.row
+		.col-md-6.col-sm-12.col-lg-6.mx-auto
+			.card.card-form
+				.card-body
+					= image_tag("task-icon.png", class: "rounded mx-auto d-block")
+					%br
+					- if(@task)
+						%h4.text-center.text-capitalize
+							= @task.taskName
+						%hr
+						%dl.row
+							%dt.col-md-6 Task Date: 
+							%dd.col-md-6 
+								= @task.taskDate
+							%dt.col-md-6 Task Priority: 
+							%dd.col-md-6
+								- if(@task.taskPriority == "1")
+									.progress
+										.progress-bar.progress-bar-striped.bg-success{ :style => "width: 25%"}
+								- elsif(@task.taskPriority == "2")
+									.progress
+										.progress-bar.progress-bar-striped.bg-warning{ :style => "width: 50%"}
+								- elsif(@task.taskPriority == "3")
+									.progress
+										.progress-bar.progress-bar-striped.bg-danger{ :style => "width: 100%"}
+							%dt.col-md-6 Task Status: 
+							%dd.col-md-6 
+								= @task.taskStatus
+						%hr
+						%dl.row
+							%dt.col-md-6 Task Descriptions:
+							%dd.col-md-6
+								= @task.description
+						- if(@task.taskStatus.to_s == "not finished")
+							%hr
+							= link_to('Mark as finished', finished_path_url(id: @task.id), method: :post, data: { confirm: "Are you sure its finished ?"},class: "btn btn-primary btn-block", role:"button")
+					- else
+						%h3.text-center this task its not yours !
+
+

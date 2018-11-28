@@ -1,0 +1,120 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+@import "bootstrap";
+@import 'datatables';
+
+body{
+	font-family: Montserrat;
+	/*background-color: rgb(233, 236, 239);*/
+}
+
+
+.btn-home-wrapper{
+	padding-left: 30%;
+	padding-right: 30%;
+}
+.jumbotron{
+	background: #9CECFB;
+  	/* fallback for old browsers */
+  	background: -webkit-linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);
+  	/* Chrome 10-25, Safari 5.1-6 */
+ 	 background: linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);
+  	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  	color: white;
+
+}
+.header-wrapper{
+	margin: auto;
+}
+
+.btn-signup{
+	padding-left: 45px;
+	padding-right: 45px;
+	border-radius: 25px;
+}
+.btn-signin{
+	padding-left: 25px;
+	padding-right: 25px;
+	border-radius: 25px;
+}
+.btn-signin:hover{
+	background-color: rgb(26, 198, 255);
+	border-color: rgb(26, 198, 255);
+	color: white;
+}
+.btn-signout{
+	padding-left: 25px;
+	padding-right: 25px;
+	border-radius: 25px;
+}
+.btn-signout:hover{
+	background-color: rgb(214, 64, 64);
+	border-color: rgb(214, 64, 64);
+	color: white;
+}
+.card-form{
+	margin-top: 5%;
+	margin-bottom: 5%;
+	border: 0;
+  	border-radius: 1rem;
+  	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+}
+.rememberme{
+	font-size: 14px;
+}
+.card-form input{
+	border-radius: 1rem;
+}
+.card-form select{
+	border-radius: 1rem;
+}
+.card-form textarea{
+	border-radius: 1rem;
+}
+.card-footer-a{
+	font-size: 14px;
+}
+.alerts{
+	font-size: 14px;
+	color: red;
+}
+.notices{
+	font-size: 14px;
+	color: green;
+}
+.signup-info{
+	font-size: 12px;
+	margin: 0;
+}
+#error_explanation h2{
+	display: none;
+}
+#error_explanation li{
+	display: none;
+}
+#error_explanation li:first-child{
+	list-style: none;
+	text-align: center;
+	font-size: 12px;
+	color: red;
+	display: block;
+}
+.modal-content{
+	margin-top: 5%;
+	border: 0;
+  	border-radius: 1.5rem;
+  	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+}

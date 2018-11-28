@@ -1,0 +1,89 @@
+
+- if !user_signed_in? 
+	.container-fluid
+		.row
+			.jumbotron.jumbotron-fluid.col-md-12
+				.header-wrapper
+					%h1{:class => "display-3 text-center font-weight-bold"} Welcome, new user !
+					%p{:class => "lead text-center"} You may sign in or sign up before you can access your dashboard content
+					.btn-home-wrapper.text-center
+						%p{:class => "lead"}
+							= link_to('Sign up', new_user_registration_path, class: "btn btn-success btn-lg btn-signup", role:"button")
+- else	
+	.container-fluid
+		.row
+			.col-md-10.col-sm-12.col-lg-10.mx-auto
+				.card.card-form
+					.card-body
+						%h5.text-center 
+							Welcome 
+							= current_user.firstName
+							this is your task
+						%hr
+						%table.table.table-striped.table-bordered{:id => "myTasks"}
+							%thead
+								%tr
+									%td number
+									%td task name
+									%td date
+									%td description
+									%td priority
+									%td action
+							%tbody
+								- ctr = 1
+								- @tasks.each do |task|
+									%tr
+										%td
+											= ctr
+										%td
+											= task.taskName
+										%td
+											= task.taskDate
+										%td
+											= task.description
+										%td
+											= task.taskPriority
+										%td
+											= link_to('Details', task_path(id: task.id),class: "btn btn-info btn-block", role:"button")
+											- if(task.taskStatus.to_s == "not finished")
+												= link_to('Mark as finished', finished_path_url(id: task.id), method: :post, data: { confirm: "Are you sure its finished ?"},class: "btn btn-success btn-block", role:"button")
+									- ctr = ctr + 1
+						%br	
+						= link_to('New Task', new_task_path,class: "btn btn-primary", role:"button")
+	- if(@tasksToday.exists?)
+		.modal.fade{:id => "tasksToday"}
+			.modal-dialog.modal-lg
+				.modal-content
+					.modal-header
+						= image_tag("warning.png", class: "rounded mx-auto d-block")
+					.modal-body
+						%h5.text-center Your task today
+						%br
+						%table.table.table-striped.table-bordered
+							%thead
+								%tr
+									%td Number
+									%td Task Name
+									%td Priority
+							%tbody
+								- ctr = 1
+								- @tasksToday.each do |taskToday|
+									%tr
+										%td
+											= ctr
+										%td
+											= taskToday.taskName
+										%td
+											- if(taskToday.taskPriority == "1")
+												.progress
+													.progress-bar.progress-bar-striped.bg-success{ :style => "width: 25%"}
+											- elsif(taskToday.taskPriority == "2")
+												.progress
+													.progress-bar.progress-bar-striped.bg-warning{ :style => "width: 50%"}
+											- elsif(taskToday.taskPriority == "3")
+												.progress
+													.progress-bar.progress-bar-striped.bg-danger{ :style => "width: 100%"}
+									- ctr = ctr + 1
+
+
+

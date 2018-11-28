@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turboly</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--FONT-->
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Montserrat:400,700'%>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic'%>
+  </head>
+
+  <body>
+    <%= render 'layouts/navbar' %>
+    <%= yield %>
+    
+
+  </body>
+</html>
