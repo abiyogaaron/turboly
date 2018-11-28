@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
   	if (user_signed_in?)
   		@tasks = Task.where("user_id = ?", current_user.id)
-  		@tasksToday = Task.where("taskDate = ? and taskStatus = ? and user_id = ?", Date.today, "not finished", current_user.id)
+  		@tasksToday = Task.where('"taskDate" = ? and "taskStatus" = ? and user_id = ?', Date.today, "not finished", current_user.id)
   		#render plain: @tasksToday.inspect
   	end
   end
