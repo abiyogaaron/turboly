@@ -12,7 +12,7 @@
 						%dl.row
 							%dt.col-md-6 Task Date: 
 							%dd.col-md-6 
-								= @task.taskDate
+								= @task.task_date
 							%dt.col-md-6 Task Priority: 
 							%dd.col-md-6
 								- if(@task.taskPriority == "1")
@@ -26,13 +26,13 @@
 										.progress-bar.progress-bar-striped.bg-danger{ :style => "width: 100%"}
 							%dt.col-md-6 Task Status: 
 							%dd.col-md-6 
-								= @task.taskStatus
+								= @task.task_status
 						%hr
 						%dl.row
 							%dt.col-md-6 Task Descriptions:
 							%dd.col-md-6
 								= @task.description
-						- if(@task.taskStatus.to_s == "not finished")
+						- if(@task.task_status.to_s == "not finished")
 							%hr
 							= link_to('Mark as finished', finished_path_url(id: @task.id), method: :post, data: { confirm: "Are you sure its finished ?"},class: "btn btn-primary btn-block", role:"button")
 					- else

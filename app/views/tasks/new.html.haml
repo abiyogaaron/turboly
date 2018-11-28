@@ -9,13 +9,13 @@
                         .form-group
                             = f.text_field :taskName, autofocus: true, class: "form-control", placeholder: "Enter your task name", required: true
                         .form-group
-                            = f.date_field :taskDate, autofocus: true, class: "form-control", placeholder: "Enter your task date", min: Date.today, required: true
+                            = f.date_field :task_date, autofocus: true, class: "form-control", placeholder: "Enter your task date", min: Date.today, required: true
                         .form-group
                             = f.select :taskPriority, [['High', 3],['Medium', 2],['Low', 1]], {}, {:class => "form-control"}
                         .form-group
                             = f.text_area :description, class: "form-control", placeholder: "Enter your task description", rows: "4"
                         .form-group
-                            = f.text_field :taskStatus, class: "form-control", value: "not finished", readonly: true
+                            = f.text_field :task_status, class: "form-control", value: "not finished", readonly: true
                         .form-group
                             = f.hidden_field :user_id, value: current_user.id
                         %hr

@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
   	if (user_signed_in?)
   		@tasks = Task.where("user_id = ?", current_user.id)
-  		@tasksToday = Task.where('"taskDate" = ? and "taskStatus" = ? and user_id = ?', Date.today, "not finished", current_user.id)
+  		@tasksToday = Task.where('task_date = ? and task_status = ? and user_id = ?', Date.today, "not finished", current_user.id)
   		#render plain: @tasksToday.inspect
   	end
   end
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
 
   def finished
   	@task = Task.find_by(id: params[:id])
-  	if (@task.update(taskStatus: 'finished'))
+  	if (@task.update(task_status: 'finished'))
   		redirect_to action: "index"
   	end
   end
@@ -36,6 +36,6 @@ class TasksController < ApplicationController
 
   private
   	def task_params
-  		params.require(:task).permit(:taskName,:taskDate,:taskPriority,:taskStatus,:user_id,:description)
+  		params.require(:task).permit(:taskName,:task_date,:taskPriority,:task_status,:user_id,:description)
   	end
 end

@@ -38,14 +38,14 @@
 										%td
 											= task.taskName
 										%td
-											= task.taskDate
+											= task.task_date
 										%td
 											= task.description
 										%td
 											= task.taskPriority
 										%td
 											= link_to('Details', task_path(id: task.id),class: "btn btn-info btn-block", role:"button")
-											- if(task.taskStatus.to_s == "not finished")
+											- if(task.task_status.to_s == "not finished")
 												= link_to('Mark as finished', finished_path_url(id: task.id), method: :post, data: { confirm: "Are you sure its finished ?"},class: "btn btn-success btn-block", role:"button")
 									- ctr = ctr + 1
 						%br	
